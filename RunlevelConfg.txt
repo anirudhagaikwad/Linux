@@ -1,0 +1,22 @@
+########## Runlevel ###############
+A runlevel is operating system state and it determins which program can be execute afetr the OS bootup.
+runlevel defines the state of machine after boot.
+############################################################
+      Runlevel                Description
+-----------------------------------------------------------
+	0                   shutdown the system
+	1		    single user mode
+	2		    multi-user mode without networking
+	3		    multi-user mode with networking
+	4		    user define
+	5		    multi-user mode with networking(GUI)
+	6		    reboot system
+---------------------------------------------------------------
+# How to get default runlevel
+-> systemctl get-default
+# How to check avilable target
+-> systemctl list-units --type=target
+# How to change default Runlevel 3
+-> systemctl set-default multi-user.target 
+-> systemctl set-default runlevel3.target
+-> reboot					
