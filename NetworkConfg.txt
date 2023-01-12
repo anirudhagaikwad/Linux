@@ -1,0 +1,50 @@
+######### Network Configuration ##########
+1)configuring a network interface with a static IP address using ifcfg files located in /etc/sysconfig/network-scripts/ directory in a CentOS 7 and RHEL 7
+Create a file named /etc/sysconfig/network-scripts/ifcfg-eth0 as follows(filename may be diffrent in your device):
+  #nano /etc/sysconfig/network-scripts/ifcfg-eth0 
+# static IP address on CentOS 7 or RHEL 7#
+HWADDR=00:08:A2:0A:BA:B8
+TYPE=Ethernet
+BOOTPROTO=none
+# Server IP #
+IPADDR=192.168.2.203
+# Subnet #
+PREFIX=24
+# Set default gateway IP #
+GATEWAY=192.168.2.254
+# Set dns servers #
+DNS1=192.168.2.254
+DNS2=8.8.8.8
+DNS3=8.8.4.4
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=no
+# Disable ipv6 #
+IPV6INIT=no
+NAME=eth0
+# This is system specific and can be created using 'uuidgen eth0' command #
+UUID=41171a6f-bce1-44de-8a6e-cf5e782f8bd6
+DEVICE=eth0
+ONBOOT=yes
+
+Save file and exit nano
+
+Restart network service: 
+    #systemctl restart network
+
+2)How to list network interfaces?
+     #ip a
+            OR
+     #nmcli -p dev  
+     
+3)verify DNS servers settings using the cat command or grep command to query the /etc/resolv.conf file as follows:
+    #cat /etc/resolv.conf
+    
+4)How to configure an eth0 interface with static IP address on CentOS 7 / RHEL 7 using Network Manager             
+    #nmtui edit eth0  
+
+5)Set static IP using GUI
+     
+6)To see more details 
+	#man ip
+	#man nmtui
+	#man nmcli    
