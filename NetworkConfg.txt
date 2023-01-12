@@ -1,6 +1,6 @@
 ######### Network Configuration ##########
 1)configuring a network interface with a static IP address using ifcfg files located in /etc/sysconfig/network-scripts/ directory in a CentOS 7 and RHEL 7
-Create a file named /etc/sysconfig/network-scripts/ifcfg-eth0 as follows(filename may be diffrent in your device):
+find a file named /etc/sysconfig/network-scripts/ifcfg-eth0 as follows(filename may be diffrent in your device):
   #nano /etc/sysconfig/network-scripts/ifcfg-eth0 
 # static IP address on CentOS 7 or RHEL 7#
 HWADDR=00:08:A2:0A:BA:B8
