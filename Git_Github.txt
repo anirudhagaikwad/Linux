@@ -1,0 +1,74 @@
+######### Git-Github-Bitb ####################
+Step 1 : Download git and install it from given URL
+	 https://git-scm.com/
+	 
+Step 2 : Check Git Version from Console/Terminal
+	 # git --version
+	 
+Step 3 : Open Browser and Signup "https://github.com/"
+
+Step 4 : SignIn https://github.com/ and Create new Repository 
+
+Step 5 : Open Console/Terminal and Clone Remote Directory to Local using below 	 		
+	 command
+	 # git clone yourRepositoryURL
+	 
+Step 6 : Change Directory to clone directory using Console/Terminal
+	 # cd ~/yourLocalRepository
+	 
+Step 7 : Add your Source code or files in yourLocalRepository
+
+Step 8 : Use below commands to Push your source to remote repository
+	 # git add .
+	 # git commit -m "My First Commit"
+	 	 		 
+Step 9 : Set your username One time only :
+	 # git config --global user.name yourUserName
+
+	 Set your email address One time only:
+	 # git config --global user.email yourGithubEmail@example.com
+	 
+Step 10 : Again Enter Commit	
+          # git commit -m "My First Commit"
+          
+Step 11 : Push to Remote
+          # git push yourRepositoryURL
+          
+Step 12 : if you get fatal error for Step 11 then follow below command for SSH 		
+	  configure
+	  1)Type below command to see your ssh keys:
+	  # ls -al ~/.ssh      
+	  2)Generate a new SSH key with your email
+	  # ssh-keygen -t rsa -b 4096 -C "yourGithubEmail@example.com" 
+	  After running this command, you will be offered to set the SSH key path, 
+	  but we recommend you to use its default value by pressing the "Enter" 
+	  button.               	 	 
+	  3)Now, when you already have an SSH key, you can add it into the ssh-agent.
+	    Be sure ssh-agent is enabled: 
+	  # eval "$(ssh-agent -s)"
+	  4)Add your SSH key to the ssh-agent. 
+	  # ssh-add ~/.ssh/id_rsa
+	  5)Open your terminal and type the command below:
+	  # cat ~/.ssh/id_rsa.pub
+	  Copy SSH key
+	
+Step 13:How to Add SSH Key to the GitHub Account
+
+
+    Log into your GitHub's account. In the top right corner of any page, click your 
+    profile photo, then click Settings.
+    In the user settings sidebar, click on SSH and GPG keys.
+    Click on the New SSH key button.
+    Type the title and your SSH key, and press the Add SSH key button.
+
+
+How to Add SSH Key to the Bitbucket Account
+
+    Log into your Bitbucket's account. In the left bottom corner of any page, click 
+    your profile photo, then click Personal Settings.
+    In the Personal settings sidebar, click on SSH keys.
+    Click on the Add key button.
+    Type the title and your Add key, and press the Add key button.
+	  
+
+Done
