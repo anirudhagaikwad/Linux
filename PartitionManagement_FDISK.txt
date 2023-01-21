@@ -1,0 +1,56 @@
+There are number of ways to manage disk in linux - Fdisk,Parted and GParted
+The fdisk command is a text-based utility for viewing and managing hard disk partitions on Linux. It’s one of the most powerful tools you can use to manage partitions, but it’s confusing to new users.
+
+On Ubuntu, Linux Mint or other Ubuntu-derived distributions, the fdisk and mkfs commands must be prefixed with 'sudo'.
+On distributions that don’t use sudo, use the 'su' command first to get a root shell, then type every command without sudo.
+Hard Disk Device Files avilable in '/dev/' , here device name is 'sdb'
+
+1)Lists the partitions on your system.
+     # fdisk -l
+2)List only specific device(Disk) partitions.
+     # fdisk -l /dev/sdb
+3)To work on a disk’s partitions, you have to enter command mode. You’ll need the 
+  device name of a disk from the 'fdisk -l' command.
+     # fdisk /dev/sdb
+4)Use single-letter commands to specify actions you want to take. Type 'm' and 
+  press Enter to see a list of the commands  
+     # Command (m for help): m
+5)Creating a Partition : Use the 'n' command to create a new partition. You can  
+  create a logical or primary partition (e for extended ,l for logical or p for 
+  primary) 
+  Next, specify the sector of the disk you want the partition to start at. Press  
+  Enter to accept the default sector, which is the first free sector on the disk.
+  Last, specify the last sector of the partition on the disk. If you want to use 
+  up all available space after the initial sector, just press Enter. You can also 
+  specify a specific size, such as +5G for a five gigabyte partition or +512M for 
+  a 512 megabyte partition. If you don’t specify a unit after the + sign, fdisk 
+  uses sectors as the unit.  
+6)Deleting a Partition :Use the 'd' command to delete a partition. You’ll be 
+  asked for the number of the partition you want to delete, which you can get  
+  from the 'p' command. 
+7)Viewing the Partition Table : Use p to print the current partition table to the 
+  terminal from within command mode.     
+8)System ID : view a list of hex codes enter 'L'  
+9)Writing Changes : Use 'w' to write the changes you’ve made to disk.
+10)Formatting a Partition :You must format new partitions with a file system 
+   before you can use them
+	   # mkfs.ext4 /dev/sdb1
+15)If you want format a partition as a swap partition:   
+	   # sudo mkswap /dev/sdb2
+16)If you want format a partition with NTFS:
+	   # mkfs -t NTFS /dev/sdb3
+17)Before using the disk, create a mount point and mount the partition to it. A  
+   mount point is a directory used to access data stored in disks.
+	   # mkdir -p [mountpoint] 
+	   # mount -t auto /dev/sdb1 [mountpoint]
+       Replace [mountpoint] with the preferred mount point (example:/usr/media)
+	   	   		   
+18)'lsblk' command that displays block devices. Block devices are files that represent devices such as hard drives, RAM disks, USB drives, and CD/ROM drives.	   
+19)Disable swap partition
+       # swapoff -a
+20)Enable swap partition
+       # swapon -a  
+21)Verify the memory using 'free'
+       # free -m
+       
+Universally Unique Identifiers, or UUIDS, are 128 bit numbers, composed of 16 octets and represented as 32 base-16 characters, that can be used to identify information across a computer system.        	            	
