@@ -1,0 +1,29 @@
+1)Extract .tar.gz File
+> tar -xzvf eclipse-jee-2022-12-R-linux-gtk-x86_64.tar.gz
+
+2)To give Write permission to folder
+#sudo chown -R [Username]:[Groupname] /opt/eclipse
+
+3)Move extracted directory to /opt
+> sudo mv eclipse /opt/
+
+4)To set Eclipse Path add below line at bottom of .profile
+#export PATH=$PATH:/opt/eclipseCPP
+
+5)Create file on desktop at location "~/.local/share/applications/"
+nano Desktop/eclipse.desktop
+-------------------------------
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=eclipse
+Exec=env WEBKIT_DISABLE_COMPOSITING_MODE=1 "/opt/eclipse/eclipse" %f
+Icon=/opt/eclipse/icon.xpm
+Categories=Development;IDE;
+Terminal=false
+StartupNotify=true
+StartupWMClass=
+Name[en_GB]=eclipse.desktop
+---------------------------------
+
+
