@@ -1,0 +1,109 @@
+1)PS - The ps command, short for Process Status, is a command line utility that is used to display or view information related to the processes running in a Linux system. As we all know, Linux is a multitasking and multiprocessing system. Therefore, multiple processes can run concurrently without affecting each other. The ps command lists current running processes alongside their PIDs and other attributes. In this guide, we are going to focus on ps command usage. It retrieves information about the processes from virtual files which are located in the /proc file system
+
+-To lists the running processes in the current shell
+#ps
+
+PID - This is the unique process ID 
+TTY - This is the typeof terminal that the user is logged in to TIME - This is the time in minutes and seconds that the process has been running 
+CMD - The command that launched the process
+
+-Viewing all the running processes in different formats
+#ps -A
+#ps -e
+
+-View processes not associated with terminal
+#ps -a
+
+-Show all current running processes
+#ps -ax
+
+-Display all processes in BSD format
+#ps aux
+
+-To perform full format listing
+#ps -ef
+
+-Filter processes according to the user
+#ps -u userName
+
+-Filter process by thread process
+#ps -L 5112
+Lflag followed by the PID
+
+-Show every process running as root
+#ps -U root -u root
+
+-Display group processes
+#ps -fG group_name
+
+-Search Process PID
+#ps -C process_name
+
+-Listing processes by PID
+#ps -fp PID
+
+-To display process hierarchy in a tree diagram
+#ps -f --forest -C bash
+
+-Display child processes of a parent process
+#ps -o pid,uname,comm -C bash
+
+-Display process threads
+#ps -p pid_no -L
+
+-Display a selected list of columns
+#ps -e -o pid,uname,pcpu,pmem,comm
+
+-Renaming column labels
+#ps -e -o pid=PID,uname=USERNAME,pcpu=CPU_USAGE,pmem=%MEM,comm=COMMAND
+
+-Ps command can be used with grep command to search for a particular process 
+#ps -ef  | grep systemd
+
+--------------------------------------------------------------------------------
+
+2)bg - Job control is nothing but the ability to stop/suspend the execution of processes (command) and continue/resume their execution as per your requirements. This is done using your operating system and shell such as bash/ksh or POSIX shell.
+The bg command is part of Linux/Unix shell job control.
+Resumes suspended jobs in the current environment by running them as background jobs.
+
+The character % introduces a job specification. The JobID can be a process ID (PID) number, or you can use one of the following symbol combinations:
+
+    %Number : Use the job number such as %1 or %2.
+    %String : Use the string whose name begins with suspended command such as %commandNameHere or %ping.
+    %+ OR %% : Refers to the current job.
+    %- : Refers to the previous job.
+    
+
+-list all active jobs in the current bash shell
+#jobs
+#jobs -l
+
+-stop jobs in the current session
+#kill -s stop PID
+
+-To resume Job (here 1 is job number)
+#bg %1
+
+-To stop job 
+#kill -s stop %1
+--------------------------------------------------------------------------------
+
+3)fg - Bring a background process to the foreground
+
+#fg %1
+#fg %ping 
+----------------------------------------------------------------------
+4)nice & renice commands are used to change the priority of a process
+there are a total of 140 priorities with a nice value that ranges from -20 to +19 where +19 represents the lowest priority and -20 the highest priority.
+
+-To check nice value of running processes
+#ps -l
+
+-top command to check the nice value of processes.
+#top
+The default niceness value for processes started by a regular user is 0
+
+-Set the Nice Value of a Process
+nice -nice_value command-arguments
+#nice -5 ping www.google.com
+

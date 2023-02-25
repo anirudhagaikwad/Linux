@@ -1,0 +1,186 @@
+1)ifconfig : The ifconfig command is a part of net-tools, a legacy Linux tool for configuring a network interface. Modern distributions use the IP command, which works in a similar manner.
+Even though ifconfig has limited capabilities compared to IP, the command is still commonly used to configure a network interface in Linux.
+
+-To check ifconfig Command Options and more details
+#man ifconfig
+
+-To View Active Network Interface Settings
+#ifconfig
+The output shows crucial data about the network interfaces, like:
+
+The names of the active network interfaces. This system includes enp0s3 and lo (the loopback interface). Active network interfaces differ from system to system.
+    The hardware MAC address.
+    The IP address (inet), netmask, and broadcast address.
+    The MTU (Maximum Transmission Unit) value.
+    
+-To Display a Shortlist of Active Interfaces
+#ifconfig -s
+
+-To Print the Verbose Output
+#ifconfig -s
+
+-To Show Every Network Interface Configuration
+#ifconfig -a
+
+-To Get Information About a Specific Network Interface
+#ifconfig enp0s3
+
+-To Disable a Network Interface
+#ifconfig enp0s3 down
+
+-To Enable a Network Interface 
+#ifconfig enp0s3 up 
+
+-To View IP Addresses
+#ifconfig enp0s3| grep inet
+
+-To View Netmask Address 
+#ifconfig enp0s3| grep netmask
+Each interface has its assigned netmask. A netmask-Network Interface Mask (or a subnet mask) refers to ranges of IP addresses divided into classes ( A, B, and C being the most common). Each class belongs to a default subnet mask. For instance:
+    Class A IPs belong to the 255.0.0.0 netmask.
+    Class B networks belong to the 255.255.0.0 netmask.
+    Class C networks use the 255.255.255.0 netmask.
+    
+-To View Broadcast Address
+#ifconfig enp0s3| grep broadcast
+
+-To View Mac Address:find it its assignment
+#
+
+-To View MTU
+#ifconfig enp0s3| grep mtu
+
+-To Assign an IP Address to an Interface
+#ifconfig enp0s3 inet 192.168.1.20
+
+-To Assign a Netmask to an Interface
+#ifconfig enp0s3 netmask 255.255.255.0
+
+-To Assign a New Broadcast IP to a Network Interface
+#ifconfig enp0s3 broadcast 192.168.1.250
+
+-To Set MTU for an Interface:
+The MTU stands for the maximum transmission unit and allows users to limit the size of packets transmitted on an interface.
+#ifconfig enp0s3 mtu 2000
+
+-To Enable Promiscuous Mode:
+Promiscuous mode allows a network device to accept all packets. The mode is often used to analyze network activity.
+#ifconfig enp0s3 promisc
+
+-To Disable Promiscuous Mode
+#ifconfig enp0s3 -promisc
+
+-To View Transmission Errors
+#ifconfig | grep errors
+
+---------------------------------------------------------------------------------
+
+2)Traceroute identifies the path packets take from source to destination.
+traceroute is a command used in network troubleshooting for mapping the path packets travel through the network. The tool aids in the discovery of possible routes of information from source to destination. Additionally, the command also helps calculate the transfer times between points.
+When applied to network troubleshooting, traceroute helps locate where traffic slows down between the source and destination.
+
+# traceroute google.co.in
+
+-By default, a traceroute sends UDP packets. Add the option -I for ICMP probe  
+ packets:
+#traceroute -I google.co.in
+
+-Include the -n option to hide the device names for a cleaner output:
+#traceroute -In google.co.in
+
+-When running a traceroute, the output shows the path packets take when traveling to a destination point. 
+The printed result divides into three general columns:
+1. Each line indicates a router hop. The first column shows the hop number.
+
+2. The following three columns show the round-trip time (RTT) for a total of three packets:
+
+    For nearby networks, these numbers are usually below 100ms.
+    For distant networks in other countries, typical RTT values go up to 300ms.
+
+Three asterisk symbols (* * *) instead of numbers followed by a "Request timed out" message can indicate:
+
+    The router is down.
+    The router is configured not to return traceroute results.
+    A firewall is enabled on the router.
+    A time-out for one of the previous routers.
+
+3. The last column displays the destination IP address and, whenever possible, the resolved domain name.
+
+-To save output in file
+# traceroute google.co.in > mytracert.txt
+
+---------------------------------------------------------------------------
+
+3)ping command is a simple utility used to check whether a network is available and if a host is reachable. With this command, you can test if a server is up and running. It also helps with troubleshooting various connectivity issues.
+
+The ping command allows you to:
+    Test your internet connection.
+    Check if a remote machine is online.
+    Analyze if there are network issues, such as dropped packages or high latency.
+    
+# ping google.com
+
+1. from: The destination and its IP address. Note that the IP address may be different for a website depending on your geographical location.
+
+2. icmp_seq=1: The sequence number of each ICMP packet. Increases by one for every subsequent echo request.
+
+3. ttl=52: The Time to Live value from 1 to 255. It represents the number of network hops a packet can take before a router discards it.
+
+4. time=7.68 ms: The time it took a packet to reach the destination and come back to the source. Expressed in milliseconds.    
+
+-Change Ping Packet Size
+In some scenarios, you may want to use -s to increase the packet size from the default value of 56 (84) bytes. The number in parenthesis represents the ping bytes sent including 28 bytes of the header packet.
+#ping -s 1000 google.com
+
+-Limit Number of Ping Packets
+#ping -c 2 google.com
+
+-Flooding the Network Using ping to Test Performance
+#ping -f google.com
+
+-Add Timestamp Before Each Line in ping Output
+#ping -D google.com
+
+-Get an Audible Ping When a Host is Reachable
+#ping -a google.com
+
+---------------------------------------------------------------------------
+4)DNS-DHCP Troubleshooting
+
+-DNS (domain name system) stores information related to domain names as a distributed database. The client-server service translates domain names to IP addresses and vice versa.
+
+-The DHCP server maintains a pool of IP addresses and leases an address to any DHCP-enabled client when it starts up on the network. Because the IP addresses are dynamic (leased) rather than static (permanently assigned), addresses no longer in use are automatically returned to the pool for reallocation.
+
+
+-To force DHCP IP renewal on Linux via the terminal:
+#dhclient -r
+
+-dig :(domain information groper) provides DNS information and helps in diagnosing issues. The utility's raw output makes it the preferred method for troubleshooting DNS issues. 
+#dig google.com
+
+The status shows whether a query was successful.
+The ANSWER SECTION shows a response to a request sent in the QUESTION SECTION.
+The SERVER displays the address for the public DNS server.
+By default, dig looks up the A record for a domain and shows which IP address the domain points to when resolving the name.
+
+-The dig tool offers many advanced options for comprehensive searches
+#dig google.com +trace
+
+-To check the delegated name servers, use the ns option:
+#dig google.com ns
+
+------------------------------------------------------------------------------
+
+5)nslookup command provides functions for checking different DNS records and servers. The tool is available on macOS, Linux, and Windows operating systems by default, and it was the first tool for querying DNS.
+
+-To get nslookup information for a domain
+#nslookup google.com
+-----------------------------------------------------------------------------
+6)host utility is a straightforward program for performing a DNS lookup.
+#host google.com
+
+-additional options to display more information. For example, add the -a tag to see a similar output to the dig command:
+#host -a google.com
+
+
+

@@ -1,0 +1,2 @@
+ps -ef | grep -i firefox
+kill -9 17319

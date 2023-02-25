@@ -1,0 +1,79 @@
+1)cal - in ubuntu replaced by ncal , cal stand for calender
+-To print current month calender
+#cal
+#cal -m 2
+
+-To print current year calender
+#cal 2023
+#cal -y
+#cal -y 2023
+
+-To print privious,current and next Month calender
+#cal -3
+
+-To print next Two or More Months Calender with current Month
+#cal -A 2
+
+-To print previous Two or More Months Calender with current Month
+#cal -B 2
+
+-To print Julian date
+#cal -j
+
+-To print specific month and year
+#cal 5 2023
+----------------------------------------------------------------------------
+2)Date
+#date
+
+- To operate on specific date
+#date -d "2019-02-15"
+
+-To display given string in format of date
+#date --date="09/10/1992"
+
+-To display date in format
+#date +"Year : %Y , Month : %m , Day : %d"
+#date +"Date : %D%nTime: %T"
+#date +"Week number : %V year : %y"
+
+-To set Date
+#date --set="20190515 0:5:30"
+
+-To display past Dates
+#date --date="2 year ago"
+#date --date="yesterday"
+#date --date="15 sec ago"
+
+-To display Future Dates
+#date --date="next monday"
+#date --date="4 day"
+#date --date="tomorrow"
+
+-To display last modified timestamp of date file(centos/ubuntu)
+# date -r /etc/hosts
+-------------------------------------------------------------------
+3)Which
+#which python3
+
+-------------------------------------------------------------------
+4)hostname
+-To display hostname
+#hostname
+-To display host ip
+#hostname -i
+-To set new hostname
+#sudo hostnamectl set-hostname NEW_HOSTNAME
+#hostname NEW_HOSTNAME
+--------------------------------------------------------------------
+5)uname 
+#uname -a
+
+6)bc - basic calculator
+
+7)uptime - current time,how long system is running,how many users logged on,load avg
+#uptime
+
+8)ps - process status
+#ps
+

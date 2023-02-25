@@ -1,0 +1,25 @@
+customername	email		phone
+anirudha:101	ani@xyz.com	8007915552
+saumya:102	s@qwe.com	1234567890
+sambhavi:103	sa@qwi.com	1894561235
+vrunda:104	qw@rty.com	4567891230
+aniket:105	an@er.com	1237894562
+shmu:255	sd@hkl.com	4561254698
+abhi:325	sk@gkl.com	1456789655
+
+AWK (awk) is a domain-specific language designed for text processing and typically used as a data extraction and reporting tool.
+AWK was created at Bell Labs in the 1970s, and its name is derived from the surnames of its authors: Alfred Aho, Peter Weinberger, and Brian Kernighan.
+
+- print first and last coloumn 
+#awk '{print $1 "\t" $NF}' customer.txt
+
+- print 2nd coloum/filed
+#awk '{print $2}' customer.txt
+
+- ignore ':' and print cutomernamename	
+#awk -F ':' '{print $1}' customer.txt
+
+- print 8 character long word,if output<8 then the spaces will add at front of value
+#awk '{printf "%8s\n",$1}' customer.txt
+
+
