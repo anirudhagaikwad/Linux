@@ -1,6 +1,7 @@
 # Linux-cheat-sheet
-https://www.redhat.com/en
-https://phoenixnap.com/kb/linux-commands-cheat-sheet
+1)https://www.redhat.com/en
+2)https://phoenixnap.com/kb/linux-commands-cheat-sheet
+3)https://www.cyberciti.biz/faq
 ### Table of Contents
 
 ---
