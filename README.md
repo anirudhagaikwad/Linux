@@ -1,7 +1,8 @@
 # Linux-cheat-sheet
-1)https://www.redhat.com/en
-2)https://phoenixnap.com/kb/linux-commands-cheat-sheet
-3)https://www.cyberciti.biz/faq
+1.https://www.redhat.com/en
+2.https://phoenixnap.com/kb/linux-commands-cheat-sheet
+3.https://www.cyberciti.biz/faq
+4.https://www.redhat.com/sysadmin/bash-scripting-while-loops
 ### Table of Contents
 
 ---

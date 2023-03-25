@@ -1,3 +1,4 @@
+#Write bash script that creates a new bash script using the nano #editor.
 #!/bin/bash
 
 # Get the name of the new script from the user
@@ -14,7 +15,5 @@ nano "$script_name"
 
 # Make the new script executable
 chmod +x "$script_name"
-
-
 echo "Script created successfully."
 
