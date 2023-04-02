@@ -1,0 +1,38 @@
+Q)A file “names.txt” has the following contents :
+"Sumit Bhardwaj
+Rajan Gupta
+Suresh Malhotra
+Keerti
+Anita Deshmukh
+Srishti K Roy"
+Write the commands to display the following:
+A. Number of lines in the file 
+B. All names which do not have surname or middle name (Single word:Keerti) 
+
+Ans ->
+A) wc -l names.txt
+B) grep -w "^[^ ]*$" names.txt
+-------------------------------------------------------------
+Q)Write a Linux command to view file without any blank line
+Ans->
+grep -v '^$' filename
+-------------------------------------------------------------
+Q)You have a file which contain some text data and you need to remove all '% # @' symbols with * in this file and then display the content 
+ Ans->
+ sed 's/[%#@]/\*/g' filename
+----------------------------------------------------------------
+Q)Bash script to determine whether a given year is a leap year or not
+Ans->
+#!/bin/bash
+
+# Take user input for year
+echo "Enter a year to check if it is a leap year: "
+read year
+
+# Check if the year is divisible by 4 but not by 100, or if it is divisible by 400
+if [[ $((year % 4)) -eq 0 && $((year % 100)) -ne 0 || $((year % 400)) -eq 0 ]]; then
+  echo "$year is a leap year."
+else
+  echo "$year is not a leap year."
+fi
+-------------------------------------------------------------
